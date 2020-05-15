@@ -21,7 +21,9 @@ Please copy the repository and run it locally from Node.js
 
 ## User Story 
 
-GIVEN a command-line application that accepts user input<br />
+AS A manager<br />
+I WANT to generate a webpage that displays my team's basic info<br />
+SO THAT I have quick access to their emails and GitHub profilesGIVEN a command-line application that accepts user<br /> input<br />
 WHEN I am prompted for my team members and their information<br />
 THEN an HTML file is generated that displays a nicely formatted team roster based on user input<br />
 WHEN I click on an email address in the HTML<br />
