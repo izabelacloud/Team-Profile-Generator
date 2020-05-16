@@ -4,10 +4,13 @@ const generateManager = function(manager) {
 
     <div class="col-3 s12 m12 l4">
         <div class="card">
+        <div class="card-top">
             <img src="images/manager.png" />
-            <h3 class="card-title" id="managername1">${manager.name} </h3>
+            <h3 class="card-title" id="managername1">${manager.name} </h3>   
+            <h5 id="managerrole1">Manager</h5>   
+        </div>
             <div id="manager">
-                <h5 id="managerrole1">Manager</h5>
+
                 <h6 id="managerid1">Id: ${manager.id} </h6>
                 <a href="mailto:${manager.email}">${manager.email}</a>
                 <h6 id="managerofficenumber1">Office #: ${manager.officeNumber} </h6>
@@ -24,10 +27,13 @@ const generateEngineer = function(engineer) {
 
     <div class="col-3 s12 m12 l4">
         <div class="card">
-            <img src="images/engineer.png" />
-            <h3 class="card-title" id="engineername1">${engineer.name} </h3>
-            <div id="engineer">
+        <div class="card-top">
+                <img src="images/engineer.png" />
+                <h3 class="card-title" id="engineername1">${engineer.name} </h3>  
                 <h5 id="engineerrole1">Engineer </h5>
+            </div>
+            <div id="engineer">
+
                 <h6 id="engineerid1">Id: ${engineer.id} </h6>
                 <a href="mailto:${engineer.email}">${engineer.email}</a>
                 <div>
@@ -48,10 +54,13 @@ const generateIntern = function(intern) {
 
     <div class="col-3 s12 m12 l4">
         <div class="card">
-            <img src="images/student.png" />
-            <h3 class="card-title" id="internname1">${intern.name}</h3>
-            <div id="engineer">
+        <div class="card-top">
+                <img src="images/student.png" />
+                <h3 class="card-title" id="internname1">${intern.name}</h3>
                 <h5 id="internrole1">Intern</h5>
+             </div>
+            <div id="engineer">
+
                 <h6 id="internid1">Id: ${intern.id}</h6>
                 <a href="mailto:${intern.email}">${intern.email}</a>
                 <h6 id="internschool1">School: ${intern.school} </h6>

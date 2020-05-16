@@ -34,11 +34,16 @@ body {
 
 /* CARDS */
 .card {
-  margin: 20px 10px;
+  margin: 2px;
   /* border: 3px  var(--dark); */
   border-radius: var(--border-radius);
-  padding: 10px;
+  padding: 2px;
   color: var(--dark);
+  background-color:white;
+  border: solid grey 0.5px;
+}
+
+.card-top {
   background-color: rgb(127, 173, 233);
 }
 
