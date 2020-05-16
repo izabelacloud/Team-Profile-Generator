@@ -2,15 +2,15 @@ const generateManager = function(manager) {
 
     return `
 
-    <div class="col s12 m12 l4">
+    <div class="col-3 s12 m12 l4">
         <div class="card">
-            <span class="card-title" id="managername1">Name: ${manager.name} </span>
+            <img src="images/manager.png" />
+            <h3 class="card-title" id="managername1">${manager.name} </h3>
             <div id="manager">
-              <img src="images/manager.png" />
-                <h6 id="managerrole1">Role: Manager </h6>
+                <h5 id="managerrole1">Manager</h5>
                 <h6 id="managerid1">Id: ${manager.id} </h6>
                 <a href="mailto:${manager.email}">${manager.email}</a>
-                <h6 id="managerofficenumber1">Office Number: ${manager.officeNumber} </h6>
+                <h6 id="managerofficenumber1">Office #: ${manager.officeNumber} </h6>
             </div>
         </div>
     </div>
@@ -22,12 +22,12 @@ const generateManager = function(manager) {
 const generateEngineer = function(engineer) {
     return `
 
-    <div class="col s12 m12 l4">
+    <div class="col-3 s12 m12 l4">
         <div class="card">
-            <span class="card-title" id="engineername1">Name: ${engineer.name} </span>
+            <img src="images/engineer.png" />
+            <h3 class="card-title" id="engineername1">${engineer.name} </h3>
             <div id="engineer">
-              <img src="images/engineer.png" />
-                <h6 id="engineerrole1">Role: Engineer </h6>
+                <h5 id="engineerrole1">Engineer </h5>
                 <h6 id="engineerid1">Id: ${engineer.id} </h6>
                 <a href="mailto:${engineer.email}">${engineer.email}</a>
                 <div>
@@ -46,13 +46,13 @@ const generateEngineer = function(engineer) {
 const generateIntern = function(intern) {
     return `
 
-    <div class="col s12 m12 l4">
+    <div class="col-3 s12 m12 l4">
         <div class="card">
-            <span class="card-title" id="internname1">Name: ${intern.name} </span>
+            <img src="images/student.png" />
+            <h3 class="card-title" id="internname1">${intern.name}</h3>
             <div id="engineer">
-              <img src="images/student.png" />
-                <h6 id="internrole1">Role: Intern </h6>
-                <h6 id="internid1">Id: ${intern.id} </h6>
+                <h5 id="internrole1">Intern</h5>
+                <h6 id="internid1">Id: ${intern.id}</h6>
                 <a href="mailto:${intern.email}">${intern.email}</a>
                 <h6 id="internschool1">School: ${intern.school} </h6>
             </div>
@@ -83,18 +83,16 @@ const generateCompletePage = function(employeeHTMLString) {
   <body>
 
       <header>
-        <nav class="navbar navbar-dark bg-primary">
-          <a class="navbar-brand" href="#">My Team</a>
-        </nav>
+            <div class="jumbotron jumbotron-fluid">
+                <div class="container">
+                    <h1 class="display-6">My Team</h1>
+                </div>
+            </div>
       </header>
 
         <main>
             <div class="container" >
             <div class="row" id="employees">
-                <!-- User Cards -->
-                <div class="row" id="title">
-                    <h4 class="flight-title #01579b light-blue darken-4 white-text"><i class="material-icons left"></i></h2>
-                </div>
                     <!-- Employee Cards -->
                     ${employeeHTMLString}
             </div>
