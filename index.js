@@ -11,7 +11,7 @@ const generateHTML = require("./src/generateHTML");
 
 const managerQuestions = [{
     type: "input",
-    name: "name",
+    name: "managerName",
     message: "Enter Team Manager's Name (Required)",
     validate: managerNameInput => {
         if(managerNameInput) {
@@ -24,7 +24,7 @@ const managerQuestions = [{
 },
 {
     type: "input",
-    name: "id",
+    name: "managerId",
     message: "Enter your Employee Id (Required)",
     validate: employeeIdInput => {
         if(employeeIdInput) {
@@ -37,7 +37,7 @@ const managerQuestions = [{
 },
 {
     type: "input",
-    name: "email",
+    name: "managerEmail",
     message: "Enter your email: (Required)",
     validate: emailInput => {
         if(emailInput) {
@@ -50,7 +50,7 @@ const managerQuestions = [{
 },
 {
     type: "input",
-    name: "officenumber",
+    name: "managerOfficeNumber",
     message: "Enter your Office Number: (Required)",
     validate: officeNumberInput => {
         if(officeNumberInput) {
@@ -202,7 +202,13 @@ const employeeQuestions = [
 
 
 const promptManager = function() {
-    return inquirer.prompt(managerQuestions)
+    return inquirer
+        .prompt(managerQuestions)
+        // .then((name, id, email) => {
+        //         this.employee1 = new Employee(name, id, email);
+        //         console.log(this.employee1)
+        // })
+   
 }
 
 
@@ -239,33 +245,15 @@ const promptEmployee = function(userData) {
 
 
 
-
-
-
-
-
-//function to invoke the questions for the user
-// const init = function() {
-
-//     return inquirer.prompt(questions)
-
-// }
-
-
-
-
 //initialization of the function calls
-// init()
-
 promptManager()
-.then(promptEmployee)
-
+    .then(promptEmployee)
     .then(userData => {
         const readUserAnswerData = generateHTML(userData);
         console.log(userData);
         fs.writeFile('./dist/index.html', readUserAnswerData, err => {
                 if(err) throw new Error(err);
-                 console.log('index.html created!');
+                    console.log('index.html created!');
         });
     });
 
