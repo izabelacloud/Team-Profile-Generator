@@ -1,6 +1,36 @@
+const generateManager = function(manager) {
 
-function generateHTML(data) {
     return `
+    <div class="row" id="employees">
+    <div class="col s12 m12 l4">
+        <div class="card">
+            <span class="card-title" id="managername1">Name: ${manager.name} </span>
+            <div id="employee1">
+              <img src="images/manager.png" />
+                <h6 id="managerrole1">Role: Manager </h6>
+                <h6 id="managerid1">Id: ${manager.id} </h6>
+                <h6 id="manageremail1">Email: ${manager.email} </h6>
+                <h6 id="managerofficenumber1">Office Number: ${manager.officeNumber} </h6>
+            </div>
+        </div>
+    </div>
+
+    `;
+}
+
+
+const generateEngineer = function() {
+
+}
+
+
+const generateIntern = function() {
+
+}
+
+
+const generateCompletePage = function(employeeHTMLString) {
+    return`
     <!DOCTYPE html>
     <html lang="en">
   
@@ -35,51 +65,11 @@ function generateHTML(data) {
             <h4 class="flight-title #01579b light-blue darken-4 white-text"><i
                     class="material-icons left"></i></h2>
             </div>
-        <!-- User Card 1 -->
-        <div class="row" id="employees">
-            <div class="col s12 m12 l4">
-                <div class="card">
-                    <span class="card-title" id="managername1">Name: ${data.managerName} </span>
-                    <div id="employee1">
-                      <img src="images/manager.png" />
-                        <h6 id="managerrole1">Role: Manager </h6>
-                        <h6 id="managerid1">Id: ${data.managerId} </h6>
-                        <h6 id="manageremail1">Email: ${data.managerEmail} </h6>
-                        <h6 id="managerofficenumber1">Office Number: ${data.managerOfficeNumber} </h6>
-                    </div>
-                </div>
+            
+                <!-- Employee Cards -->
+                ${employeeHTMLString}
+
             </div>
-        <!-- User Card 2 -->
-          <div class="col s12 m12 l4">
-              <div class="card">
-                  <span class="card-title" id="engineername1">Name: ${data.engineerName} </span>
-                  <div id="employee2">
-                    <img src="images/engineer.png" />
-                      <h6 id="engineerrole1">Role: Engineer  </h6>
-                      <h6 id="engineerid1">Id: ${data.engineerId} </h6>
-                      <h6 id="engineer1">Email: ${data.engineerEmail} </h6>
-                      <h6 id="engineergithub1">Github: ${data.engineerGithub} </h6>
-                  </div>
-              </div>
-          </div>
-        <!-- User Card 3 -->
-        <div class="col s12 m12 l4">
-          <div class="card">
-              <span class="card-title" id="internname1">Name: ${data.internName} </span>
-              <div id="employee3">
-                <img src="images/student.png" />
-                  <h6 id="internrole1">Role: Intern </h6>
-                  <h6 id="internid1">Id: ${data.internId} </h6>
-                  <h6 id="intern1">Email: ${data.internEmail} </h6>
-                  <h6 id="internuniversity1">School: ${data.internSchool}  </h6>
-              </div>
-          </div>
-      </div>
-
-
-    </div>
-
-
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
@@ -88,7 +78,53 @@ function generateHTML(data) {
   </body>
 
   </html>
-    `;
+
+
+    `
+}
+
+
+
+
+function generateHTML(data) {
+
+    const finalHTMLArr = []
+    console.log(data);
+
+    //differentiate between roles
+    for (let i = 0; i < data.length; i++) {
+        const currentEmployee = data[i];
+        const role = currentEmployee.getRole();
+        console.log('current employee is:')
+        console.log(currentEmployee);
+        console.log('current role is:')
+        console.log(role);
+
+        if(role === "Manager") {
+            const managerCardHtml = generateManager(currentEmployee)
+            finalHTMLArr.push(managerCardHtml);
+            console.log('entered Manger psuh bloci iono');
+            console.log(managerCardHtml);
+        }
+
+        // else if
+
+
+        
+    }
+
+    const employeeHTMLString = finalHTMLArr.join("")
+    console.log('final HTML arr is:');
+    console.log(finalHTMLArr);
+    console.log('employee HTML string is:');
+    console.log(employeeHTMLString);
+    const finalHTMLString = generateCompletePage(employeeHTMLString);
+    return finalHTMLString;
+
+    //then call a different function
+
+
+
 
 }
 
