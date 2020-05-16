@@ -1,3 +1,5 @@
+
+//function to generate the card for the manager
 const generateManager = function(manager) {
 
     return `
@@ -22,6 +24,7 @@ const generateManager = function(manager) {
 }
 
 
+//function to generate the cards for the engineer
 const generateEngineer = function(engineer) {
     return `
 
@@ -49,6 +52,7 @@ const generateEngineer = function(engineer) {
 }
 
 
+//function to generate the cards for the intern
 const generateIntern = function(intern) {
     return `
 
@@ -73,6 +77,7 @@ const generateIntern = function(intern) {
 }
 
 
+//function to generate the complete page
 const generateCompletePage = function(employeeHTMLString) {
     return`
     <!DOCTYPE html>
@@ -122,37 +127,46 @@ const generateCompletePage = function(employeeHTMLString) {
 
 
 
-
+//function to collect the employee data and pass it into a final array that will be pushed into the final page
 function generateHTML(data) {
 
     const finalHTMLArr = []
     console.log(data);
 
-    //differentiate between roles
+    //differentiate between roles and based on that get the data for each user type
     for (let i = 0; i < data.length; i++) {
         const currentEmployee = data[i];
         const role = currentEmployee.getRole();
 
+
+        //call the generateManager function while passing in the current employee data from the collected data for all employees
         if(role === "Manager") {
             const managerCardHtml = generateManager(currentEmployee)
+            //push the final data into the array
             finalHTMLArr.push(managerCardHtml);
 
         }
 
+        //call the generateEngineer function while passing in the current employee data from the collected data for all employees
         if (role === "Engineer") {
             const engineerCardHtml = generateEngineer(currentEmployee);
+            //push the final data into the array
             finalHTMLArr.push(engineerCardHtml);
         }
 
+        //call the generateIntern function while passing in the current employee data from the collected data for all employees
         if (role === "Intern") {
             const internCardHtml = generateIntern(currentEmployee);
+            //push the final data into the array
             finalHTMLArr.push(internCardHtml);
         }
 
     }
 
+    //here we are joining each string from each user and joining it into a final html string
     const employeeHTMLString = finalHTMLArr.join("")
 
+    //once the finalHTMLString is collected, then then generateCompletePage function is called with the overall data
     const finalHTMLString = generateCompletePage(employeeHTMLString);
     return finalHTMLString;
 

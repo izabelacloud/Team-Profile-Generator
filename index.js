@@ -8,11 +8,11 @@ const fs = require("fs");
 const generateHTML = require("./src/generateHTML");
 
 
-
+//array to collect all data from all team members
 const teamMembers = [];
 
 
-
+//function to prompt for the Intern questions
 const promptIntern = function() {
     inquirer.prompt([
         {
@@ -73,6 +73,7 @@ const promptIntern = function() {
         const intern = new Intern(internName, internId, internEmail, internSchool )
         teamMembers.push(intern);
 
+        //once the answers have been collected and passed into the object and a new instance of a object was created for this object, then the additional employee prompt is called
         promptChoicesNew();
 
         console.log(internName, internId, internEmail, internSchool);
@@ -81,7 +82,7 @@ const promptIntern = function() {
 
 
 
-
+//function to prompt for the Engineer questions
 const promptEngineerNew = function() {
     inquirer.prompt([
         {
@@ -143,6 +144,7 @@ const promptEngineerNew = function() {
         const engineer = new Engineer(engineerName, engineerId, engineerEmail, engineerGithub )
         teamMembers.push(engineer);
 
+        //once the answers have been collected and passed into the object and a new instance of a object was created for this object, then the additional employee prompt is called
         promptChoicesNew();
 
 
@@ -153,7 +155,7 @@ const promptEngineerNew = function() {
 
 
 
-
+//function to write the final file based on the array teamMembers that has now all the team members
 const writeFile = function(teamMembers) {
         const createHTMLFile = generateHTML(teamMembers);
         
@@ -164,7 +166,7 @@ const writeFile = function(teamMembers) {
 }
 
 
-
+//function to promp to add additional team member
 const promptChoicesNew = function() {
     inquirer.prompt([
         {
@@ -184,15 +186,17 @@ const promptChoicesNew = function() {
         const {choicesForEmployeeType} = answers;
         if (choicesForEmployeeType === "Engineer") {
 
+            //prompt for the Engineer data function call
             promptEngineerNew();
         }
         else if (choicesForEmployeeType === "Intern") {
 
+            //prompt for the Intern data function call
             promptIntern();
         }
         else if(choicesForEmployeeType === "Finish building the Team!") {
 
-
+            //call the write file function by passing in the teamMembers array data
             writeFile(teamMembers);
 
         }
@@ -203,7 +207,7 @@ const promptChoicesNew = function() {
 
 
 
-
+//function to prompt for the manager questions
 const promptManagerNew = function() {
     inquirer.prompt([
         {
@@ -263,6 +267,7 @@ const promptManagerNew = function() {
         const manager = new Manager(managerName, managerId, managerEmail, managerOfficeNumber )
         teamMembers.push(manager);
 
+        //once the answers have been collected and passed into the object and a new instance of a object was created for this object, then the additional employee prompt is called
         promptChoicesNew();
 
 
@@ -273,7 +278,7 @@ const promptManagerNew = function() {
 
 
 
-
+//call the promptManagerNew function which will then call the rest of the functions
 promptManagerNew();
 
 

@@ -58,7 +58,7 @@ Izabela Petrovicova
 Tests are being run by npm Jest framework.
 
 The video on how to test this application is included here: 
-[Walk-through Video](TBD)
+[Walk-through Video](https://drive.google.com/file/d/1BZK0oWp7nxfZKLkYWHvqeMwSL1y3ov02/view)
 
 ## Questions
 
