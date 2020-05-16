@@ -1,15 +1,15 @@
 const generateManager = function(manager) {
 
     return `
-    <div class="row" id="employees">
+
     <div class="col s12 m12 l4">
         <div class="card">
             <span class="card-title" id="managername1">Name: ${manager.name} </span>
-            <div id="employee1">
+            <div id="manager">
               <img src="images/manager.png" />
                 <h6 id="managerrole1">Role: Manager </h6>
                 <h6 id="managerid1">Id: ${manager.id} </h6>
-                <h6 id="manageremail1">Email: ${manager.email} </h6>
+                <a href="mailto:${manager.email}">${manager.email}</a>
                 <h6 id="managerofficenumber1">Office Number: ${manager.officeNumber} </h6>
             </div>
         </div>
@@ -19,12 +19,47 @@ const generateManager = function(manager) {
 }
 
 
-const generateEngineer = function() {
+const generateEngineer = function(engineer) {
+    return `
+
+    <div class="col s12 m12 l4">
+        <div class="card">
+            <span class="card-title" id="engineername1">Name: ${engineer.name} </span>
+            <div id="engineer">
+              <img src="images/engineer.png" />
+                <h6 id="engineerrole1">Role: Engineer </h6>
+                <h6 id="engineerid1">Id: ${engineer.id} </h6>
+                <a href="mailto:${engineer.email}">${engineer.email}</a>
+                <div>
+                <a href="https://github.com/${engineer.github}" target="_blank">${engineer.github}</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    `;
 
 }
 
 
-const generateIntern = function() {
+const generateIntern = function(intern) {
+    return `
+
+    <div class="col s12 m12 l4">
+        <div class="card">
+            <span class="card-title" id="internname1">Name: ${intern.name} </span>
+            <div id="engineer">
+              <img src="images/student.png" />
+                <h6 id="internrole1">Role: Intern </h6>
+                <h6 id="internid1">Id: ${intern.id} </h6>
+                <a href="mailto:${intern.email}">${intern.email}</a>
+                <h6 id="internschool1">School: ${intern.school} </h6>
+            </div>
+        </div>
+    </div>
+
+    `;
 
 }
 
@@ -53,23 +88,18 @@ const generateCompletePage = function(employeeHTMLString) {
         </nav>
       </header>
 
-      <main>
-
-
-      </main>
-
-
-      <div class="container" >
-        <!-- User Cards -->
-        <div class="row" id="title">
-            <h4 class="flight-title #01579b light-blue darken-4 white-text"><i
-                    class="material-icons left"></i></h2>
+        <main>
+            <div class="container" >
+            <div class="row" id="employees">
+                <!-- User Cards -->
+                <div class="row" id="title">
+                    <h4 class="flight-title #01579b light-blue darken-4 white-text"><i class="material-icons left"></i></h2>
+                </div>
+                    <!-- Employee Cards -->
+                    ${employeeHTMLString}
             </div>
-            
-                <!-- Employee Cards -->
-                ${employeeHTMLString}
-
             </div>
+        </main>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
@@ -95,36 +125,37 @@ function generateHTML(data) {
     for (let i = 0; i < data.length; i++) {
         const currentEmployee = data[i];
         const role = currentEmployee.getRole();
-        console.log('current employee is:')
-        console.log(currentEmployee);
-        console.log('current role is:')
-        console.log(role);
+        // console.log('current employee is:')
+        // console.log(currentEmployee);
+        // console.log('current role is:')
+        // console.log(role);
 
         if(role === "Manager") {
             const managerCardHtml = generateManager(currentEmployee)
             finalHTMLArr.push(managerCardHtml);
-            console.log('entered Manger psuh bloci iono');
-            console.log(managerCardHtml);
+            // console.log('entered Manger psuh bloci iono');
+            // console.log(managerCardHtml);
         }
 
-        // else if
+        if (role === "Engineer") {
+            const engineerCardHtml = generateEngineer(currentEmployee);
+            finalHTMLArr.push(engineerCardHtml);
+        }
 
+        if (role === "Intern") {
+            const internCardHtml = generateIntern(currentEmployee);
+            finalHTMLArr.push(internCardHtml);
+        }
 
-        
     }
 
     const employeeHTMLString = finalHTMLArr.join("")
-    console.log('final HTML arr is:');
-    console.log(finalHTMLArr);
-    console.log('employee HTML string is:');
-    console.log(employeeHTMLString);
+    // console.log('final HTML arr is:');
+    // console.log(finalHTMLArr);
+    // console.log('employee HTML string is:');
+    // console.log(employeeHTMLString);
     const finalHTMLString = generateCompletePage(employeeHTMLString);
     return finalHTMLString;
-
-    //then call a different function
-
-
-
 
 }
 
