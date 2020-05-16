@@ -132,16 +132,11 @@ function generateHTML(data) {
     for (let i = 0; i < data.length; i++) {
         const currentEmployee = data[i];
         const role = currentEmployee.getRole();
-        // console.log('current employee is:')
-        // console.log(currentEmployee);
-        // console.log('current role is:')
-        // console.log(role);
 
         if(role === "Manager") {
             const managerCardHtml = generateManager(currentEmployee)
             finalHTMLArr.push(managerCardHtml);
-            // console.log('entered Manger psuh bloci iono');
-            // console.log(managerCardHtml);
+
         }
 
         if (role === "Engineer") {
@@ -157,10 +152,7 @@ function generateHTML(data) {
     }
 
     const employeeHTMLString = finalHTMLArr.join("")
-    // console.log('final HTML arr is:');
-    // console.log(finalHTMLArr);
-    // console.log('employee HTML string is:');
-    // console.log(employeeHTMLString);
+
     const finalHTMLString = generateCompletePage(employeeHTMLString);
     return finalHTMLString;
 

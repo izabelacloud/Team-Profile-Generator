@@ -20,10 +20,10 @@ const promptIntern = function() {
             name: "internName",
             message: "Enter the Intern's Name (Required)",
             validate: internNameInput => {
-                if(internNameInput) {
+                if(internNameInput.match("[a-zA-Z]+$")) {
                     return true;
                 } else {
-                    console.log("Please enter the Intern's name!");
+                    console.log("Please enter the Intern's name as a string!");
                     return false;
                 }
             }
@@ -33,10 +33,10 @@ const promptIntern = function() {
             name: "internId",
             message: "Enter the Intern's Id (Required)",
             validate: internIdInput => {
-                if(internIdInput) {
+                if(internIdInput.match("[1-9]+$")) {
                     return true;
                 } else {
-                    console.log("Please enter the Intern's Id!");
+                    console.log("Please enter the Intern's Id as a number!");
                     return false;
                 }
             }
@@ -46,7 +46,7 @@ const promptIntern = function() {
             name: "internEmail",
             message: "Enter the Intern's email (Required)",
             validate: internEmailInput => {
-                if(internEmailInput) {
+                if(internEmailInput.match("[a-zA-Z@]+$")) {
                     return true;
                 } else {
                     console.log("Please enter the Intern's email!");
@@ -59,10 +59,10 @@ const promptIntern = function() {
             name: "internSchool",
             message: "Enter the Intern's school name (Required)",
             validate: internSchoolInput => {
-                if(internSchoolInput) {
+                if(internSchoolInput.match("[a-zA-Z]+$")) {
                     return true;
                 } else {
-                    console.log("Please enter the Intern's school name!");
+                    console.log("Please enter the Intern's school name as a string!");
                     return false;
                 }
             }
@@ -89,10 +89,10 @@ const promptEngineerNew = function() {
             name: "engineerName",
             message: "Enter the Engineer's Name (Required)",
             validate: engineerNameInput => {
-                if(engineerNameInput) {
+                if(engineerNameInput.match("[a-zA-Z]+$")) {
                     return true;
                 } else {
-                    console.log("Please enter the Engineer's name!");
+                    console.log("Please enter the Engineer's name as a string!");
                     return false;
                 }
             }
@@ -102,10 +102,10 @@ const promptEngineerNew = function() {
             name: "engineerId",
             message: "Enter the Engineer's Id (Required)",
             validate: engineerIdInput => {
-                if(engineerIdInput) {
+                if(engineerIdInput.match("[1-9]+$")) {
                     return true;
                 } else {
-                    console.log("Please enter the Engineer's Id!");
+                    console.log("Please enter the Engineer's Id as a number!");
                     return false;
                 }
             }
@@ -115,7 +115,7 @@ const promptEngineerNew = function() {
             name: "engineerEmail",
             message: "Enter the Engineer's email (Required)",
             validate: engineerEmailInput => {
-                if(engineerEmailInput) {
+                if(engineerEmailInput.match("[a-zA-Z@]+$")) {
                     return true;
                 } else {
                     console.log("Please enter the Engineer's email!");
@@ -128,10 +128,10 @@ const promptEngineerNew = function() {
             name: "engineerGithub",
             message: "Enter the Engineer's Github username (Required)",
             validate: engineerGitHubInput => {
-                if(engineerGitHubInput) {
+                if(engineerGitHubInput.match("[a-zA-Z]+$")) {
                     return true;
                 } else {
-                    console.log("Please enter the Github username!");
+                    console.log("Please enter the Github username as a string!");
                     return false;
                 }
             }
@@ -155,8 +155,6 @@ const promptEngineerNew = function() {
 
 
 const writeFile = function(teamMembers) {
-        console.log(`received team members:`)
-        console.log(teamMembers);
         const createHTMLFile = generateHTML(teamMembers);
         
         fs.writeFile('./dist/index.html', createHTMLFile, err => {
@@ -195,9 +193,6 @@ const promptChoicesNew = function() {
         else if(choicesForEmployeeType === "Finish building the Team!") {
 
 
-            console.log("create html")
-            console.log(teamMembers)
-
             writeFile(teamMembers);
 
         }
@@ -209,21 +204,17 @@ const promptChoicesNew = function() {
 
 
 
-
-
-
 const promptManagerNew = function() {
     inquirer.prompt([
         {
             type: "input",
             name: "managerName",
-            // name: getName()
             message: "Enter Team Manager's Name (Required)",
             validate: managerNameInput => {
-                if(managerNameInput) {
+                if(managerNameInput.match("[a-zA-Z]+$")) {
                     return true;
                 } else {
-                    console.log("Please enter the Team Manager's name!");
+                    console.log("Please enter the Team Manager's name as a string!");
                     return false;
                 }
             }
@@ -233,10 +224,10 @@ const promptManagerNew = function() {
             name: "managerId",
             message: "Enter your Employee Id (Required)",
             validate: employeeIdInput => {
-                if(employeeIdInput) {
+                if(employeeIdInput.match("[1-9]+$")) {
                     return true;
                 } else {
-                    console.log("Please enter your the Employee Id!");
+                    console.log("Please enter your the Employee Id as a number!");
                     return false;
                 }
             }
@@ -246,10 +237,10 @@ const promptManagerNew = function() {
             name: "managerEmail",
             message: "Enter your email: (Required)",
             validate: emailInput => {
-                if(emailInput) {
+                if(emailInput.match("[a-zA-Z@]+$")) {
                     return true;
                 } else {
-                    console.log("Please enter your email!");
+                    console.log("Please enter your email as a string!");
                     return false;
                 }
             }
@@ -259,10 +250,10 @@ const promptManagerNew = function() {
             name: "managerOfficeNumber",
             message: "Enter your Office Number: (Required)",
             validate: officeNumberInput => {
-                if(officeNumberInput) {
+                if(officeNumberInput.match("[1-9]+$")) {
                     return true;
                 } else {
-                    console.log("Please enter your Office Number!");
+                    console.log("Please enter your Office Number as a number!");
                     return false;
                 }
             }
@@ -275,10 +266,10 @@ const promptManagerNew = function() {
         promptChoicesNew();
 
 
-
         console.log(managerName, managerId, managerEmail, managerOfficeNumber);
     })
 }
+
 
 
 
